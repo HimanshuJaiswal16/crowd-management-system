@@ -10,7 +10,6 @@ npm-debug.log*
 yarn-error.log*
 
 # Environment files
-/src/environments/
 /.env
 /.env.*
 !.env.example
