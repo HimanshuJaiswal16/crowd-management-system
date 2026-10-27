@@ -1,0 +1,54 @@
+<div class="crowd-entries">
+
+  <div class="table-responsive bg-white border rounded-3">
+    <table class="table table-hover align-middle mb-0 entries-table">
+      <thead class="table-light">
+        <tr>
+          <th>Name</th>
+          <th>Sex</th>
+          <th>Entry</th>
+          <th>Exit</th>
+          <th>Dwell Time</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        @for (item of records(); track item.personId) {
+          <tr>
+            <td>
+              <div class="d-flex align-items-center gap-2">
+                @if (item.imageUrl) {
+                  <img [src]="item.imageUrl" [alt]="item.personName" class="avatar rounded-circle">
+                } @else {
+                  <span class="avatar rounded-circle bg-secondary-subtle text-secondary d-flex align-items-center justify-content-center">
+                    {{ item.personName.charAt(0) }}
+                  </span>
+                }
+                {{ item.personName }}
+              </div>
+            </td>
+            <td>{{ item.gender }}</td>
+            <td>{{ item.entryLocal ?? '--' }}</td>
+            <td>{{ item.exitLocal ?? '--' }}</td>
+            <td>{{ formatDwell(item.dwellMinutes) }}</td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="5" class="text-center text-muted py-4">No entry/exit records found.</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Pagination -->
+  <ngb-pagination
+    class="d-flex justify-content-center mt-3"
+    [page]="page"
+    [pageSize]="pageSize"
+    [collectionSize]="totalRecords()"
+    [maxSize]="5"
+    [rotate]="true"
+    [ellipses]="true"
+    (pageChange)="onPageChange($event)" />
+</div>

@@ -1,1 +1,83 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'bootstrap/scss/bootstrap';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+html body {
+    margin: 0;
+    font-family: "IBM Plex Sans", Arial, 'Noto Sans', sans-serif;
+    font-weight: 500;
+    line-height: 1.5;
+    font-size: 16px;
+    background: #F7F8FA;
+    color: #030303;
+}
+
+p {
+    margin: 0 0 10px;
+}
+
+a,
+a:not([href]):not([class]) {
+    text-decoration: none !important;
+    color: #030303;
+    -webkit-transition: 0.3s ease;
+    -o-transition: 0.3s ease;
+    transition: 0.3s ease;
+}
+
+a:hover,
+a:focus {
+    color: #5b9d8c;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 500;
+    line-height: inherit;
+    color: #1D1D1B;
+    font-style: normal;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 30px;
+}
+
+h2 {
+    font-size: 28px;
+}
+
+h3 {
+    font-size: 26px;
+}
+
+h4 {
+    font-size: 24px;
+}
+
+h5 {
+    font-size: 22px;
+}
+
+h6 {
+    font-size: 20px;
+}
+
+img {
+    width: 100%;
+    max-width: 100%;
+    vertical-align: baseline;
+}

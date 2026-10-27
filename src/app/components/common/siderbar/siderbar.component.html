@@ -1,0 +1,38 @@
+<aside class="sidebar-wrapper d-flex flex-column h-100 w-100 text-white p-3">
+
+    <!-- Brand + menu toggle -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <span class="d-flex align-items-center gap-2 fw-bold fs-5">
+            <img src="/images/kloudspot-icon.png" alt="Kloudspot logo" width="28" height="28">
+            kloudspot
+        </span>
+
+        <button type="button" class="btn btn-link text-white p-0 d-flex" aria-label="Toggle menu">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
+    </div>
+
+    <!-- Nav -->
+    <nav class="flex-grow-1">
+        <ul class="nav flex-column gap-2">
+            @for (item of navItems; track item.path) {
+            <li class="nav-item">
+                <a class="sidebar-link nav-link d-flex align-items-center gap-3 text-white rounded-2 px-3 py-2"
+                    [routerLink]="'/' + item.path" routerLinkActive="active">
+                    <span class="material-symbols-outlined fs-5">{{ item.icon }}</span>
+                    <span class="small">{{ item.label }}</span>
+                </a>
+            </li>
+            }
+        </ul>
+    </nav>
+
+    <!-- Logout -->
+    <button type="button"
+        class="btn btn-link text-white text-decoration-none d-flex align-items-center gap-3 px-3 py-2 mt-auto align-self-start"
+        (click)="logout()">
+        <span class="material-symbols-outlined fs-5">power_settings_new</span>
+        <span class="small">Logout</span>
+    </button>
+
+</aside>

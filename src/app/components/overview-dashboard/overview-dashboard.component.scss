@@ -1,0 +1,183 @@
+:host {
+    display: block;
+    background: #f5f7f8;
+    min-height: 100%;
+}
+
+$border: #e9ecef;
+$muted: #6c757d;
+
+.overview {
+    height: calc(100dvh - 142px);
+    overflow: auto;
+}
+
+.page-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.section-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.card-title {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.btn-date {
+    background: #fff;
+    border: 1px solid $border;
+    font-size: 0.875rem;
+}
+
+// ---- Card ----
+.ks-card {
+    background: #fff;
+    border: 1px solid $border;
+    border-radius: 0.75rem;
+    padding: 1rem;
+
+    @media (min-width: 768px) {
+        padding: 1.25rem;
+    }
+}
+
+// ---- Stats ----
+.stat-label {
+    font-size: 0.8125rem;
+    color: $muted;
+}
+
+.stat-value {
+    font-size: clamp(1.5rem, 1rem + 1.5vw, 2rem);
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.stat-change {
+    font-size: 0.75rem;
+    color: $muted;
+    margin-top: 0.25rem;
+}
+
+.trend {
+    color: #1a9e6a;
+
+    &.trend-down {
+        color: #d64545;
+    }
+}
+
+// Stacked on phones: line under each stat. Side by side from 576px: line to the right.
+.stat-divider {
+    border-bottom: 1px solid $border;
+    padding-bottom: 1rem;
+}
+
+@media (min-width: 576px) {
+    .stat-col {
+        padding: 0 1rem;
+    }
+
+    .stat-col:first-child {
+        padding-left: 0;
+    }
+
+    .stat-col:last-child {
+        padding-right: 0;
+    }
+
+    .stat-divider {
+        border-bottom: 0;
+        padding-bottom: 0;
+        border-right: 1px solid $border;
+    }
+}
+
+// ---- Legend ----
+.legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8125rem;
+    color: $muted;
+}
+
+.dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+
+    &.dot-occupancy,
+    &.dot-male {
+        background: #0a7c78;
+    }
+
+    &.dot-female {
+        background: #f2a93b;
+    }
+}
+
+// ---- Charts: the container controls the height, Chart.js fills it ----
+.chart-box {
+    position: relative;
+    width: 100%;
+}
+
+.chart-lg {
+    height: 220px;
+
+    @media (min-width: 768px) {
+        height: 300px;
+    }
+}
+
+.chart-md {
+    height: 220px;
+
+    @media (min-width: 768px) {
+        height: 260px;
+    }
+}
+
+.donut-wrap {
+    position: relative;
+    width: min(100%, 180px);
+    aspect-ratio: 1;
+}
+
+.donut-center {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+
+    small {
+        font-size: 0.75rem;
+        color: $muted;
+    }
+
+    strong {
+        font-size: 1.25rem;
+    }
+}
+
+.gender-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+
+    &+li {
+        margin-top: 0.5rem;
+    }
+}

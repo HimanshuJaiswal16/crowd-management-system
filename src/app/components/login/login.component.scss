@@ -1,0 +1,57 @@
+$teal: #0a9a94;
+$teal-dark: #087f7a;
+
+.login-wrapper {
+  // Dark overlay on top of the office photo; plain dark colour if the image is missing
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+    url('/images/login-bg.png') center / cover no-repeat,
+    #222;
+}
+
+.welcome-title {
+  font-size: clamp(1.5rem, 1rem + 2vw, 2.25rem); // scales from phone to desktop
+  line-height: 1.3;
+}
+
+.login-header {
+  background-image:
+    linear-gradient(135deg,
+      rgba(15, 90, 85, 0.85),
+      rgba(18, 63, 61, 0.85)),
+    url('/images/sidebar/sidebar-pattern.png');
+
+  background-size: cover, 300px auto;
+  background-position: center, right center;
+  background-repeat: no-repeat, no-repeat;
+}
+
+.login-header>img {
+  max-width: 30px;
+}
+
+.btn-login {
+  --bs-btn-bg: #{$teal};
+  --bs-btn-border-color: #{$teal};
+  --bs-btn-hover-bg: #{$teal-dark};
+  --bs-btn-hover-border-color: #{$teal-dark};
+  --bs-btn-active-bg: #{$teal-dark};
+  --bs-btn-active-border-color: #{$teal-dark};
+  --bs-btn-disabled-bg: #{$teal};
+  --bs-btn-disabled-border-color: #{$teal};
+}
+
+.form-control:focus {
+  border-color: $teal;
+  box-shadow: 0 0 0 0.2rem rgba(10, 154, 148, 0.2);
+}
+
+// Keep the eye icon clear of Bootstrap's red "invalid" icon
+.password-input.is-invalid {
+  background-image: none;
+}
+
+.toggle-password {
+  color: #444;
+  line-height: 1;
+}

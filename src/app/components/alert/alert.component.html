@@ -1,0 +1,34 @@
+<div class="d-flex justify-content-between align-items-center p-3 border-bottom">
+  <h6 class="mb-0 fw-semibold">Alerts</h6>
+  <button type="button" class="btn-close" aria-label="Close alerts" (click)="close()"></button>
+</div>
+
+<!-- Only the list scrolls; the header stays put -->
+<div class="alerts flex-grow-1 overflow-auto p-3 d-flex flex-column gap-2">
+  @for (alert of alerts; track alert.id) {
+    <article class="alert-card border rounded-3 p-2 bg-white" [class.alert-new]="alert.isNew">
+      <p class="small mb-1 text-muted">
+        {{ alert.date }}
+        @if (alert.time) {
+          <span class="ms-1 text-dark">{{ alert.time }}</span>
+        }
+      </p>
+
+      <div class="d-flex justify-content-between align-items-end gap-2">
+        <div class="min-w-0">
+          <h6 class="fw-bold mb-1 small">{{ alert.message }}</h6>
+          <p class="small text-muted mb-0 d-flex align-items-center gap-1">
+            <span class="material-symbols-outlined fs-6">location_on</span>
+            {{ alert.zone }}
+          </p>
+        </div>
+
+        <span class="badge severity" [class]="'severity-' + alert.severity.toLowerCase()">
+          {{ alert.severity }}
+        </span>
+      </div>
+    </article>
+  } @empty {
+    <p class="text-center text-muted mt-4">No alerts right now.</p>
+  }
+</div>

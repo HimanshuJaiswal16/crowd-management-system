@@ -1,0 +1,84 @@
+<div class="overview container-fluid g-0">
+
+  <!-- Occupancy -->
+  <h2 class="section-title">Occupancy</h2>
+  <div class="row gy-3 mb-3">
+    @for (group of statGroups(); track $index) {
+      <div class="col-12" [class.col-xl-8]="$index === 0" [class.col-xl-4]="$index === 1">
+        <section class="ks-card h-100">
+          <div class="row g-3 g-sm-0">
+            @for (stat of group; track stat.label; let last = $last) {
+              <div class="col-12 col-sm stat-col" [class.stat-divider]="!last">
+                <div class="stat-label">{{ stat.label }}</div>
+                <div class="stat-value">
+                  @if (loading()) {
+                    <span class="placeholder-glow"><span class="placeholder col-6"></span></span>
+                  } @else {
+                    {{ stat.value }}
+                  }
+                </div>
+              </div>
+            }
+          </div>
+        </section>
+      </div>
+    }
+  </div>
+
+  <section class="ks-card mb-4">
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-2">
+      <h3 class="card-title">Overall Occupancy</h3>
+      <span class="legend-item"><i class="dot dot-occupancy"></i>Occupancy</span>
+    </div>
+
+    <div class="chart-box chart-lg">
+      <canvas #occupancyCanvas role="img" aria-label="Overall occupancy over time"></canvas>
+
+      @if (loading()) {
+        <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-white bg-opacity-75">
+          <div class="spinner-border text-secondary" role="status">
+            <span class="visually-hidden">Loading</span>
+          </div>
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- Demographics -->
+  <h2 class="section-title">Demographics</h2>
+  <div class="row g-3">
+    <div class="col-12 col-xl-4">
+      <section class="ks-card h-100">
+        <h3 class="card-title mb-3">Chart of Demographics</h3>
+        <div class="d-flex flex-column flex-sm-row flex-xl-column align-items-center justify-content-center gap-3 gap-sm-5 gap-xl-3">
+          <div class="donut-wrap">
+            <canvas #donutCanvas role="img" aria-label="Male and female split"></canvas>
+            <div class="donut-center">
+              <small>Total Crowd</small>
+              <strong>100%</strong>
+            </div>
+          </div>
+          <ul class="list-unstyled mb-0 gender-list">
+            <li><i class="dot dot-male"></i><strong>{{ malePercent }}%</strong> Males</li>
+            <li><i class="dot dot-female"></i><strong>{{ femalePercent }}%</strong> Females</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <div class="col-12 col-xl-8">
+      <section class="ks-card h-100">
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-2">
+          <h3 class="card-title">Demographics Analysis</h3>
+          <div class="d-flex gap-3">
+            <span class="legend-item"><i class="dot dot-male"></i>Male</span>
+            <span class="legend-item"><i class="dot dot-female"></i>Female</span>
+          </div>
+        </div>
+        <div class="chart-box chart-md">
+          <canvas #demographicsCanvas role="img" aria-label="Male and female crowd over time"></canvas>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

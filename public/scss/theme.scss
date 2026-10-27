@@ -1,0 +1,54 @@
+// src/theme.scss  — import once in src/styles.scss:  @use './theme';
+// All colours live here. Charts read these CSS variables at runtime,
+// so changing a value (or a [data-theme] block) re-themes the whole page.
+
+:root {
+  // Brand
+  --ks-primary: #0f6e6e;
+  --ks-primary-soft: #e6f2f2;
+
+  // Surfaces
+  --ks-page-bg: #f6f8fa;
+  --ks-card-bg: #ffffff;
+  --ks-border: #e8edf0;
+
+  // Text
+  --ks-text: #1f2a37;
+  --ks-text-muted: #6b7785;
+
+  // Trends
+  --ks-positive: #2bb39a;
+  --ks-negative: #e5484d;
+
+  // Charts
+  --ks-chart-occupancy: #5f9ea0;
+  --ks-chart-occupancy-fill: rgba(95, 158, 160, 0.22);
+  --ks-chart-male: #7fb0ae;
+  --ks-chart-female: #b7dfde;
+  --ks-chart-grid: #e3e9ec;
+  --ks-chart-tick: #4b5563;
+  --ks-live: #c1272d;
+
+  // Shape
+  --ks-radius: 8px;
+
+  // Map onto Bootstrap 5.3 variables so .btn, .text-muted etc. follow the theme
+  --bs-body-bg: var(--ks-page-bg);
+  --bs-body-color: var(--ks-text);
+  --bs-border-color: var(--ks-border);
+  --bs-primary: var(--ks-primary);
+  --bs-secondary-color: var(--ks-text-muted);
+}
+
+// Optional dark variant: <html data-theme="dark">
+[data-theme='dark'] {
+  --ks-primary-soft: #12302f;
+  --ks-page-bg: #0f1a1c;
+  --ks-card-bg: #16252a;
+  --ks-border: #243439;
+  --ks-text: #e6edf0;
+  --ks-text-muted: #93a4ab;
+  --ks-chart-grid: #26373c;
+  --ks-chart-tick: #b4c3c8;
+  --ks-chart-occupancy-fill: rgba(95, 158, 160, 0.28);
+}

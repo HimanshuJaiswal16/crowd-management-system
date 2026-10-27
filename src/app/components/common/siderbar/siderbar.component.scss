@@ -1,0 +1,40 @@
+:host {
+    display: block;
+    height: 100%;
+}
+
+.sidebar-wrapper {
+    // Teal glow over dark base; swap in your mesh image on top of it
+    background:
+        url('/images/sidebar/sidebar-bg.png') center / cover no-repeat,
+        radial-gradient(ellipse at 50% 55%, #0a5f5a 0%, #12403f 35%, #1e2a2b 70%, #222 100%);
+}
+
+.sidebar-link {
+    position: relative;
+    opacity: 0.85;
+    transition: background-color 0.15s ease, opacity 0.15s ease;
+
+    &:hover {
+        opacity: 1;
+        background-color: rgba(255, 255, 255, 0.08);
+    }
+
+    &.active {
+        opacity: 1;
+        background-color: rgba(255, 255, 255, 0.22);
+
+        // white indicator bar on the left edge
+        &::before {
+            content: '';
+            position: absolute;
+            left: -0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 70%;
+            background: #fff;
+            border-radius: 0 4px 4px 0;
+        }
+    }
+}

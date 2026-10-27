@@ -1,0 +1,24 @@
+// The offcanvas gives us a full-height box; make this component fill it
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+
+.min-w-0 { min-width: 0; }
+
+.alert-card.alert-new {
+  background: #d9f4f3 !important;
+  border-color: #0a7c78 !important;
+}
+
+.severity {
+  color: #fff;
+  font-weight: 500;
+  flex-shrink: 0;
+
+  &.severity-high   { background: #b42318; }
+  &.severity-medium { background: #f79009; }
+  &.severity-low    { background: #079455; }
+}

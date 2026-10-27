@@ -1,0 +1,31 @@
+<header class="header-wrapper d-flex flex-wrap align-items-center gap-2 gap-sm-3 bg-white px-3 py-2">
+
+    <h6 class="mb-0 text-truncate">Crowd Management</h6>
+
+    <select class="form-select site-select" aria-label="Select site" (change)="onSiteChange($event)">
+        <option value="" disabled [selected]="!selectedSite()">Select Site</option>
+
+        @for (site of sites(); track site.siteId) {
+        <option [value]="site.siteId" [selected]="site.siteId === selectedSite()?.siteId">
+            {{ site.name }}
+        </option>
+        }
+    </select>
+
+    <div class="header-actions ms-auto d-flex align-items-center gap-2 flex-shrink-0">
+
+        <button type="button" class="language-badge-button btn border rounded-pill d-flex align-items-center gap-2 p-1"
+            aria-label="Change language">
+            <span
+                class="language-badge rounded-circle bg-danger text-white d-flex align-items-center justify-content-center">
+                En
+            </span>
+            <img src="/images/header/localization-icon.png" alt="" width="20" height="20" class="me-1">
+        </button>
+
+        <button type="button" class="btn p-1 d-flex" aria-label="Open notifications" (click)="openSidebar()">
+            <span class="material-symbols-outlined">notifications</span>
+        </button>
+
+    </div>
+</header>
